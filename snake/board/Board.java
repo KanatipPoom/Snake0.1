@@ -1,6 +1,9 @@
 package board;
 
 import javax.swing.*;
+
+import gameobj.Snake;
+
 import java.awt.*;
 
 
@@ -17,13 +20,22 @@ public class Board extends JPanel {
         
 
         public Board() {
-            JFrame frame = new JFrame();
+            JFrame frame = new JFrame("Snake");
+            
+            
             frame.setSize(border, border_height);
             frame.setResizable(false);
             frame.setVisible(true);
             frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            
             frame.add(this);
             setBackground(Color.black);
+
+            Snake snakegame=new Snake(border,border_height );
+            frame.add(snakegame);
+            frame.pack();
+            //Action   
+            snakegame.requestFocus();
         }
 
         protected void paintComponent(Graphics g){
